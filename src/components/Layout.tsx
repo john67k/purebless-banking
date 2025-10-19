@@ -74,22 +74,47 @@ export default function Layout({ children }: LayoutProps) {
 
             {/* Mobile Bottom Nav */}
             <div className="md:hidden fixed bottom-0 inset-x-0 bg-white/90 backdrop-blur-xl border-t border-gray-200/50 z-50">
-                <div className="flex justify-around items-center h-16 px-1">
+                {/* First Row - Main Actions */}
+                <div className="flex justify-around items-center h-14 px-1 border-b border-gray-200/30">
                     {[
                         navItems[0], // Dashboard
                         navItems[1], // Send Money
-                        navItems[6], // Invoices
-                        navItems[7], // Checks
-                        navItems[8]  // Activity
+                        navItems[2], // Deposit
+                        navItems[3], // Add Funds
+                        navItems[4]  // Withdraw
                     ].map((item) => {
                         const isActive = location.pathname === item.path;
                         return (
                             <Link
                                 key={item.name}
                                 to={item.path}
-                                className="flex flex-col items-center justify-center flex-1 py-2"
+                                className="flex flex-col items-center justify-center flex-1 py-1"
                             >
-                                <item.icon className={`h-5 w-5 mb-1 ${isActive ? "text-indigo-600" : "text-gray-400"}`} />
+                                <item.icon className={`h-4 w-4 mb-1 ${isActive ? "text-indigo-600" : "text-gray-400"}`} />
+                                <span className={`text-xs font-medium ${isActive ? "text-indigo-600" : "text-gray-600"}`}>
+                                    {item.name.split(' ')[0]}
+                                </span>
+                            </Link>
+                        );
+                    })}
+                </div>
+                {/* Second Row - Services & Settings */}
+                <div className="flex justify-around items-center h-14 px-1">
+                    {[
+                        navItems[5], // Loans
+                        navItems[6], // Invoices
+                        navItems[7], // Checks
+                        navItems[8], // Activity
+                        navItems[9]  // Settings
+                    ].map((item) => {
+                        const isActive = location.pathname === item.path;
+                        return (
+                            <Link
+                                key={item.name}
+                                to={item.path}
+                                className="flex flex-col items-center justify-center flex-1 py-1"
+                            >
+                                <item.icon className={`h-4 w-4 mb-1 ${isActive ? "text-indigo-600" : "text-gray-400"}`} />
                                 <span className={`text-xs font-medium ${isActive ? "text-indigo-600" : "text-gray-600"}`}>
                                     {item.name.split(' ')[0]}
                                 </span>
@@ -102,21 +127,43 @@ export default function Layout({ children }: LayoutProps) {
             {/* Main Content */}
             <div className="md:pl-64 flex flex-col flex-1">
                 {/* Top header */}
-                <div className="sticky top-0 z-40 bg-white/70 backdrop-blur-xl border-b border-gray-200/60 px-4 md:px-8 py-3 flex items-center justify-end gap-3">
-                    <a href={createPageUrl("PayIn4")} className="hidden md:inline-flex items-center text-sm text-gray-600 hover:text-gray-900 gap-2">
-                        <CreditCard className="w-4 h-4" /> Pay in 4
-                    </a>
-                    <a href={createPageUrl("CardApplication")} className="hidden md:inline-flex items-center text-sm text-gray-600 hover:text-gray-900 gap-2">
-                        <CreditCard className="w-4 h-4" /> Apply for Card
-                    </a>
-                    <a href={createPageUrl("Checkout")} className="hidden md:inline-flex items-center text-sm text-gray-600 hover:text-gray-900 gap-2">
-                        <ShoppingCart className="w-4 h-4" /> Checkout
-                    </a>
-                    <a href={createPageUrl("Notifications")} className="inline-flex items-center text-sm text-gray-600 hover:text-gray-900 gap-2">
-                        <Bell className="w-4 h-4" /> Notifications
-                    </a>
+                <div className="sticky top-0 z-40 bg-white/70 backdrop-blur-xl border-b border-gray-200/60 px-4 md:px-8 py-3">
+                    {/* Mobile Header */}
+                    <div className="md:hidden flex items-center justify-between">
+                        <div className="flex items-center gap-2">
+                            <div className="w-8 h-8 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-lg flex items-center justify-center shadow-lg">
+                                <Wallet className="w-4 h-4 text-white" />
+                            </div>
+                            <div>
+                                <h1 className="text-lg font-bold bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent">
+                                    Pure Bless
+                                </h1>
+                            </div>
+                        </div>
+                        <div className="flex items-center gap-2">
+                            <a href={createPageUrl("Notifications")} className="p-2 rounded-lg hover:bg-gray-100">
+                                <Bell className="w-5 h-5 text-gray-600" />
+                            </a>
+                        </div>
+                    </div>
+                    
+                    {/* Desktop Header */}
+                    <div className="hidden md:flex items-center justify-end gap-3">
+                        <a href={createPageUrl("PayIn4")} className="inline-flex items-center text-sm text-gray-600 hover:text-gray-900 gap-2">
+                            <CreditCard className="w-4 h-4" /> Pay in 4
+                        </a>
+                        <a href={createPageUrl("CardApplication")} className="inline-flex items-center text-sm text-gray-600 hover:text-gray-900 gap-2">
+                            <CreditCard className="w-4 h-4" /> Apply for Card
+                        </a>
+                        <a href={createPageUrl("Checkout")} className="inline-flex items-center text-sm text-gray-600 hover:text-gray-900 gap-2">
+                            <ShoppingCart className="w-4 h-4" /> Checkout
+                        </a>
+                        <a href={createPageUrl("Notifications")} className="inline-flex items-center text-sm text-gray-600 hover:text-gray-900 gap-2">
+                            <Bell className="w-4 h-4" /> Notifications
+                        </a>
+                    </div>
                 </div>
-                <main className="flex-1 pb-20 md:pb-8">
+                <main className="flex-1 pb-32 md:pb-8">
                     {children}
                 </main>
             </div>
