@@ -5,6 +5,7 @@
 ## 🌟 Features
 
 ### Banking Operations
+
 - 💸 Send & Receive Money
 - 📈 Top Up Account
 - 💵 Cash Out
@@ -12,12 +13,14 @@
 - 🧾 Digital Receipts
 
 ### Business Management
+
 - 📄 Invoice Creation & Management
 - 💶 Check Writing System
 - 💳 Payment Processing
 - 📊 Business Analytics
 
 ### Technical Features
+
 - ⚛️ React 18.2.0 + TypeScript
 - 🎨 Tailwind CSS + Framer Motion
 - 📱 Mobile Responsive Design
@@ -26,7 +29,7 @@
 
 ## 🚀 Live Demo
 
-**🌐 Live Application**: https://john67k.github.io/purebless-banking/
+**🌐 Live Application**: <https://john67k.github.io/purebless-banking/>
 
 ## 🛠️ Development
 
