@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>PureBless Banking - Mobile Preview</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 30px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            min-height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            max-width: 420px;
+            margin: 40px auto;
+            background: rgba(255, 255, 255, 0.06);
+            padding: 20px;
+            border-radius: 16px;
+            backdrop-filter: blur(8px);
+        }
+
+        img.logo {
+            width: 96px;
+            height: 96px;
+            margin-bottom: 12px;
+        }
+
+        a.button {
+            display: inline-block;
+            margin: 12px auto;
+            padding: 14px 20px;
+            border-radius: 10px;
+            background: #fff;
+            color: #4b2cff;
+            text-decoration: none;
+            font-weight: 700
+        }
+
+        p.small {
+            font-size: 14px;
+            opacity: 0.95
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <img class="logo" src="/logo.svg" alt="PureBless logo" />
+        <h1>PureBless Mobile Preview</h1>
+        <p class="small">Use this page on your phone to preview the app. If you're running the dev server locally, make
+            sure the server was started with network access (see note below).</p>
+
+        <div style="margin-top:18px">
+            <a id="openApp" class="button" href="#">Open Web App</a>
+        </div>
+
+        <p style="margin-top:14px" class="small">Tip: To preview from other devices on your network, run the dev server
+            with <code>npm run dev -- --host</code> and open the URL shown in your terminal on your phone (replace
+            <code>localhost</code> with your machine's LAN IP).</p>
+        <p style="margin-top:8px" class="small">If you deployed your app, open the published URL instead.</p>
+    </div>
+
+    <script>
+        // Compute base path to app. If Vite serves the app under a subpath (like /purebless-banking/), we attempt to detect it.
+        (function () {
+            const pathname = window.location.pathname;
+            // If path contains "purebless-banking", use that as base; otherwise use '/'
+            const baseMatch = pathname.match(/(^.*?purebless-banking\/)/);
+            const base = baseMatch ? baseMatch[1] : '/';
+            // Construct full app URL
+            const appUrl = window.location.origin + base;
+            const openBtn = document.getElementById('openApp');
+            openBtn.href = appUrl;
+            openBtn.innerText = 'Open PureBless App';
+        })();
+    </script>
+</body>
+
+</html>
